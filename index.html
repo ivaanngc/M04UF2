@@ -21,24 +21,39 @@ let config = {
 
 let game = new Phaser.Game(config);
 
-let rect;
+//let rect;
+//let rect_dir = 1;
 
-let rect_dir = 1;
+let huevera_b, huevera_m, huevera_d;
+let huevo_b, huevo_m, huevo_d;
 
 function precarga (){
-	
+	this.load.image('huevera', 'huevera.png');
+	this.load.image('huevo', 'huevo.png');
 }
 
 function crea (){
-	rect = this.add.rectangle(400, 225, 32, 32, 0xffffff);
+	//rect = this.add.rectangle(400, 225, 32, 32, 0xffffff);
+
+	huevera_m = this.add.image(400, 160, 'huevera');
+	huevera_m.setScale(.5);
+	huevera_m.setTint(Phaser.Display.Color.GetColor(192, 128, 16));
+
+	huevo_m = this.add.image(400, 256, 'huevo');
+	huevo_m.setScale(.5);
+	huevo_m.setTint(Phaser.Display.Color.GetColor(192, 128, 16));
 }
 
 function actualiza () {
+	/*
 	rect.x += rect_dir;
 
 	if (rect.x <= 0 || rect.x >= canvas_w){
 		rect_dir = -rect_dir;
+	
 	}
+		*/
+
 }
 
 		</script>
