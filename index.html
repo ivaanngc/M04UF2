@@ -27,21 +27,46 @@ let game = new Phaser.Game(config);
 let huevera_b, huevera_m, huevera_d;
 let huevo_b, huevo_m, huevo_d;
 
+let sprite_scale = .5;
+
 function precarga (){
+	this.load.image('grass_bg', 'grass_bg.png');
+	this.load.image('straw_bg', 'straw_bg.png');
 	this.load.image('huevera', 'huevera.png');
 	this.load.image('huevo', 'huevo.png');
 }
 
 function crea (){
 	//rect = this.add.rectangle(400, 225, 32, 32, 0xffffff);
+	
+	let huevera_x = 128;
 
-	huevera_m = this.add.image(400, 160, 'huevera');
-	huevera_m.setScale(.5);
-	huevera_m.setTint(Phaser.Display.Color.GetColor(192, 128, 16));
+	let marron = Phaser.Display.Color.GetColor(192, 128, 16);
+	let dorado = Phaser.Display.Color.GetColor(188, 195, 0);
+	
+	canvas_bg = this.add.image(canvas_w/2, canvas_h/2, 'grass_bg');
+	
+	eggcups_bg = this.add.image(huevera_x, canvas_h/2, 'straw_bg');
+	eggcups_bg.setScale(sprite_scale);
+	eggcups_bg.angle = 90;
+
+	huevera_d = this.add.image(huevera_x, canvas_h/2 - 128, 'huevera');
+	huevera_d.setScale(sprite_scale);
+	huevera_d.setTint(dorado);
+		
+	huevera_m = this.add.image(huevera_x, canvas_h/2, 'huevera');
+	huevera_m.setScale(sprite_scale);
+	huevera_m.setTint(marron);
+
+	huevera_b = this.add.image(huevera_x, canvas_h/2 + 128, 'huevera');
+	huevera_b.setScale(sprite_scale);
 
 	huevo_m = this.add.image(400, 256, 'huevo');
-	huevo_m.setScale(.5);
-	huevo_m.setTint(Phaser.Display.Color.GetColor(192, 128, 16));
+	huevo_m.setTint(marron);
+	
+	huevo_m.on('pointerdown', function (){
+		console.log("Huevo marrón");
+	});
 }
 
 function actualiza () {
